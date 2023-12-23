@@ -4,7 +4,7 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import pickle
 import numpy as np
-
+from cbt import voice
 from keras.models import load_model
 model = load_model('model.h5')
 import json
@@ -61,6 +61,7 @@ def getResponse(ints, intents_json):
 def chatbot_response(msg):
     ints = predict_class(msg, model)
     res = getResponse(ints, intents)
+    voice(res)
     return res
 
 
